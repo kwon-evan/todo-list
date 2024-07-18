@@ -1,7 +1,8 @@
 FROM node:18-alpine3.17 as build
+ARG WEB_DIR
 
 WORKDIR /app
-COPY . /app
+COPY ${WEB_DIR} /app
 
 RUN npm install
 RUN npm run build

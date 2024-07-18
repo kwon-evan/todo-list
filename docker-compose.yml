@@ -11,3 +11,23 @@ services:
       - "127.0.0.1:${POSTGRES_PORT}:5432"
     volumes:
       - ${POSTGRES_DATA-./config/db}:/var/lib/postgresql/data
+  web:
+    container_name: ${PROJECT_NAME}-web
+    restart: always
+    build:
+      context: ./
+      dockerfile: ./Dockerfiles/web.Dockerfile
+      args:
+        - WEB_DIR=${WEB_DIR}
+    ports:
+      - 80:80
+    volumes:
+      - ${WEB_DIR}:/app
+  server:
+    container_name: ${PROJECT_NAME}-server
+    restart: always
+    build:
+      context: ./
+      dockerfile: ./Dockerfiles/server.Dockerfile
+    ports:
+      - 8000:8000
