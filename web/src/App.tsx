@@ -1,10 +1,10 @@
-// import { useState } from 'react'
+// import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
   return (
     <>
-      <p>Hello Vite + React!!!!!</p>
+      <p>Hello, World!</p>
     </>
   )
 }

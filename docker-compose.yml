@@ -20,7 +20,7 @@ services:
       args:
         - WEB_DIR=${WEB_DIR}
     ports:
-      - 80:80
+      - 5173:5173
     volumes:
       - ${WEB_DIR}:/app
   server:
