@@ -1,0 +1,17 @@
+generator client {
+  provider  = "prisma-client-py"
+  interface = "asyncio"
+  recursive_type_depth = -1
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgres://postgres:postgres@db:5432/todo-app"
+}
+
+model Todo {
+  id        Int       @id @default(autoincrement())
+  value     String?
+  done      Boolean   @default(false)
+}
+

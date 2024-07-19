@@ -27,7 +27,9 @@ services:
     container_name: ${PROJECT_NAME}-server
     restart: always
     build:
-      context: ./
+      context: .
       dockerfile: ./Dockerfiles/server.Dockerfile
+      args:
+        - SERVER_DIR=${SERVER_DIR}
     ports:
       - 8000:8000
