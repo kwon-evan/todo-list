@@ -22,17 +22,19 @@ RUN pdm install --check --prod --no-editable
 FROM python:$PYTHON_BASE
 ARG SERVER_DIR
 
-# retrieve packages from build stage
+# copy files from build stage
+COPY --from=builder /project/src /project/src
 COPY --from=builder /project/.venv /project/.venv
-ENV PATH="/project/.venv/bin:$PATH"
-
-# set command/entrypoint, adapt to fit your needs
 COPY ${SERVER_DIR}/prisma /project/prisma
-COPY ${SERVER_DIR}/src /project/src
 COPY ${SERVER_DIR}/main.py /project/main.py
+
+ENV PATH="/project/.venv/bin:$PATH"
 
 WORKDIR /project
 
 RUN prisma generate
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
 
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
