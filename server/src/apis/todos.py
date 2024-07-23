@@ -16,11 +16,16 @@ class Todo(BaseModel):
     done: bool
 
 
+@router.get("/")
+def health_check():
+    return {"status": "OK"}
+
+
 @router.get("/todos/", tags=["todos"])
 async def read_todos():
-    users = await prisma.todo.find_many()
-    print("users", users)
-    return users
+    todos = await prisma.todo.find_many()
+    print(todos)
+    return {"messeage": todos}
 
 
 @router.post("/todos/", tags=["todos"])

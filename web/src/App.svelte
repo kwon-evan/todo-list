@@ -1,6 +1,7 @@
 <script>
   import "./app.css";
   import * as Card from "$lib/components/ui/card";
+  import Todos from "$lib/todos.svelte";
 </script>
 
 <main>
@@ -15,4 +16,5 @@
       <p>Card Footer</p>
     </Card.Footer>
   </Card.Root>
+  <Todos />
 </main>
