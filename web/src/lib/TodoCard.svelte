@@ -1,9 +1,13 @@
 <script>
-  import { onMount } from "svelte";
   import axios from "axios";
+
+  import * as Card from "$lib/components/ui/card";
+  import { Input } from "$lib/components/ui/input";
+  import { Button } from "$lib/components/ui/button";
+  import { Plus } from "lucide-svelte";
+
   import TodoItem from "./TodoItem.svelte";
   import { getTodos } from "./todo-utils";
-  import * as Card from "$lib/components/ui/card";
 
   let promise = getTodos();
 </script>
@@ -23,7 +27,8 @@
       <p style="color: red">{error.message}</p>
     {/await}
   </Card.Content>
-  <Card.Footer>
-    <p>Footer</p>
+  <Card.Footer class="flex space-x-2 ">
+    <Input placeholder="Add new todo" />
+    <Button variant="outline"><Plus /></Button>
   </Card.Footer>
 </Card.Root>
