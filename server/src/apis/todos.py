@@ -25,7 +25,13 @@ def health_check():
 async def read_todos():
     todos = await prisma.todo.find_many()
     print(todos)
-    return {"messeage": todos}
+    return todos
+
+
+@router.get("/todo/{id}", tags=["todos"])
+async def read_todo(id: int):
+    todo = await prisma.todo.find_unique(where={"id": id})
+    return todo
 
 
 @router.post("/todos/", tags=["todos"])
