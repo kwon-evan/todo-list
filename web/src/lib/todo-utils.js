@@ -31,9 +31,23 @@ export async function createTodo(todo) {
   }
 }
 
-export async function updateTodo(id, todo) {
+export async function updateTodo(id, value, isDone) {
+  if (typeof value !== 'string' || value.trim() === '') {
+    throw new Error('Todo must be a non-empty string');
+  }
+
   const endpoint = url + "/todos/" + id;
-  return await axios.put(endpoint, todo).then((res) => res.data);
+  const payload = {
+    "value": value.trim(),
+    "done": isDone
+  }
+
+  try {
+    const response = await axios.put(endpoint, payload);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 }
 
 export async function deleteTodo(id) {

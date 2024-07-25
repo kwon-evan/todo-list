@@ -23,8 +23,7 @@ def health_check():
 
 @router.get("/todos/", tags=["todos"])
 async def read_todos():
-    todos = await prisma.todo.find_many()
-    print(todos)
+    todos = await prisma.todo.find_many(order={"id": "asc"})
     return todos
 
 
