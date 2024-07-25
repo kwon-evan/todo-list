@@ -13,24 +13,8 @@ export async function getTodo(id) {
 }
 
 export async function createTodo(todo) {
-  if (typeof todo !== 'string' || todo.trim() === '') {
-    console.log("Todo is empty or not a string");
-    throw new Error('Todo must be a non-empty string')
-  }
-
   const endpoint = url + "/todos/";
-  const payload = {
-    "value": todo.trim(),
-    "done": false
-  };
-
-  try {
-    const response = await axios.post(endpoint, payload);
-    return response.data;
-  } catch (error) {
-    console.error('Error creating todo:', error.response?.data || error.message);
-    throw error;
-  }
+  return await axios.post(endpoint, todo).then((res) => res.data);
 }
 
 export async function updateTodo(id, todo) {
