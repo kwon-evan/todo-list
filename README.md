@@ -10,3 +10,8 @@ Written for study purposes!
 - Prisma
 ### Database
 - PostgreSQL
+## Getting Started
+```bash
+cp sample.env .env
+docker compose up
+```
