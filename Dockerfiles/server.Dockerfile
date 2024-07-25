@@ -11,7 +11,7 @@ RUN pip install -U pdm
 ENV PDM_CHECK_UPDATE=false
 
 # copy files
-COPY ${SERVER_DIR}/pyproject.toml ${SERVER_DIR}/pdm.lock ${SERVER_DIR}/README.md /project/
+COPY ${SERVER_DIR}/pyproject.toml ${SERVER_DIR}/pdm.lock /project/
 COPY ${SERVER_DIR}/src/ /project/src
 
 # install dependencies and project into the local packages directory
