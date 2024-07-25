@@ -9,11 +9,15 @@
 
 <form>
   <div class="flex w-full items-center space-x-2 pt-4 pb-4">
-    <p class="w-full">{id}. {value}</p>
-    <Button variant="outline">
+    {#if done}
+      <p class="w-full line-through">{id}. {value}</p>
+    {:else}
+      <p class="w-full">{id}. {value}</p>
+    {/if}
+    <Button size="icon" variant="outline">
       <SquarePen />
     </Button>
-    <Button variant="outline">
+    <Button size="icon" variant="outline">
       <Trash2 />
     </Button>
   </div>

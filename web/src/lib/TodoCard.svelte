@@ -29,6 +29,6 @@
   </Card.Content>
   <Card.Footer class="flex space-x-2 ">
     <Input placeholder="Add new todo" />
-    <Button variant="outline"><Plus /></Button>
+    <Button size="icon" variant="outline"><Plus /></Button>
   </Card.Footer>
 </Card.Root>
