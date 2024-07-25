@@ -13,5 +13,7 @@ Written for study purposes!
 ## Getting Started
 ```bash
 cp sample.env .env
+```
+```bash
 docker compose up
 ```
