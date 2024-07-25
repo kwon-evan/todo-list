@@ -7,7 +7,10 @@ from starlette.middleware.cors import CORSMiddleware
 from src.apis import apis
 from src.prisma import prisma
 
-origins = ["http://localhost:5173"]
+origins = [
+    "http://localhost",
+    "http://localhost:5173",
+]
 
 
 @asynccontextmanager

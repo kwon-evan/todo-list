@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:8000/apis";
+const url = "http://0.0.0.0:8000/apis";
 
 export async function getTodos() {
   const endpoint = url + "/todos/";
