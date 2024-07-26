@@ -6,7 +6,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgres://postgres:postgres@db:5432/todo-app"
+  url      = env("POSTGRES_DATABASE_URL")
 }
 
 model Todo {

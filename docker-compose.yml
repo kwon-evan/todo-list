@@ -10,6 +10,7 @@ services:
     ports:
       - ${POSTGRES_PORT}:5432
     volumes:
+      - ${POSTGRES_INITDB-./config/initdb}:/docker-entrypoint-initdb.d
       - ${POSTGRES_DATA-./config/db}:/var/lib/postgresql/data
   web:
     container_name: ${PROJECT_NAME}-web
@@ -31,10 +32,9 @@ services:
       dockerfile: ./Dockerfiles/server.Dockerfile
       args:
         - SERVER_DIR=${SERVER_DIR}
-    ports:
-      - 8000:8000
     environment:
       - PYTHONUNBUFFERED=1
+      - POSTGRES_DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
   nginx:
     container_name: ${PROJECT_NAME}-nginx
     restart: always
