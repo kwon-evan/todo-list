@@ -15,5 +15,8 @@ Written for study purposes!
 cp sample.env .env
 ```
 ```bash
+cd web && npm install && cd ..
+```
+```bash
 docker compose up
 ```
