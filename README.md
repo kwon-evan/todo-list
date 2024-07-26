@@ -20,3 +20,4 @@ cd web && npm install && cd ..
 ```bash
 docker compose up
 ```
+... and go to http://localhost
